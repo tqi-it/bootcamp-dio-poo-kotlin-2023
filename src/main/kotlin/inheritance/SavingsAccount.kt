@@ -6,15 +6,15 @@ class SavingsAccount(
     numberAccount, amount
 ) {
 
-    fun calculateInterest() {
+    fun calculateInterestMonth() {
         amount += amount * (interestRate / 100)
     }
 
     override fun showStatement() {
-        println("Savings Account")
+        show()
+    }
 
-        for (statement in statement) {
-            println(statement)
-        }
+    private fun show() {
+        println("Exibir Entradas e saídas do saldo comum")
     }
 }
