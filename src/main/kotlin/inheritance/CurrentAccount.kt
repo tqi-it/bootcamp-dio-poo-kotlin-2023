@@ -1,36 +1,29 @@
 package inheritance
 
 class CurrentAccount(
-    numberAccount: Int, amount: Double, private val overDraft: Double
+    numberAccount: Int, amount: Double, private var overDraft: Double
 ) : BankAccount(
     numberAccount, amount
 ) {
 
-    // Exemplo Sobrescrita
     override fun makeWithdrawal(value: Double): Double {
-        if (value <= (amount + overDraft)) {
-            amount -= value
+        println(value)
+
+        if (amount >= value) {
+            amount = amount - value
             return value
         }
 
-        return 0.0
+        overDraft = overDraft - value
+        return value
     }
 
     override fun showStatement() {
-        println("Current Account")
-
-        for (statement in statement) {
-            println(statement)
-        }
+        show()
     }
 
-    // Exemplo Sobrecarga
-    fun showStatement(limit: Int) {
-
-    }
-
-    // Exemplo Sobrecarga
-    fun showStatement(limit: Int, withPrefix: Boolean) {
-
+    private fun show() {
+        println("Exibir Entradas e saídas do saldo comum")
+        println("Exibir Entradas e saídas do saldo cheque especial")
     }
 }
